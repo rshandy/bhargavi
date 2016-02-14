@@ -9,6 +9,11 @@ var grabtext;
 var start;
 var startscreen = true;
 var back;
+var red;
+var x,y;
+var i =0;
+
+
 function setup() {
 	
 	bg = loadImage("cloudbackground.png");
@@ -16,9 +21,15 @@ function setup() {
  	grabtext = loadImage("grabthecupcaketext.png");
  	start = loadImage("start.png");
  	back = loadImage("back.png");
+ 	red = loadImage("red.png");
+ 	i=i+5;
+ 	x = random(0,width);
+ 	y = random(0,height);
 }
 
 function draw() {
+	i=i+10;
+	console.log(i);
 	if(startscreen){
  	background(bg);
     image(grabtext,130, height/3);
@@ -27,6 +38,8 @@ function draw() {
 	else{
 	background(bg);
 	image(back,10,10,40,40);
+	showcupcake(x,y);
+
 	}
 }
 
@@ -42,5 +55,10 @@ function mousePressed() {
 	var d_back = dist(mouseX,mouseY,10,10)
 	if(d_back<50) {
 		startscreen = true;
+
 	}
+}
+function showcupcake(x,y) {
+	// body...
+    image(red,x,y);
 }
