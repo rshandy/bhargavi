@@ -98,10 +98,10 @@ function draw() {
 }        
 
 function addcupcakes(n){	
-	// x = 1200, y = 800 
+	// x = 100-1100, y = 100 - 700
 	for (var i = 0; i <n;i++){
- 		x = random(80,width-80);
- 		y = random(80,height-120);
+ 		x = 100+110*random(10);
+ 		y = 100+70*random(10);
  		cupcakearray.push([x,y,random(250,300)]);
  	}
 }
