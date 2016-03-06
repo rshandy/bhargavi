@@ -8,6 +8,7 @@ var startscreen = true;
 var gameendscreen = false;
 var cupcakearray = [];
 var gameover;
+var missedcupcakes = 0;
 
 function setup() {
 
@@ -20,13 +21,14 @@ function setup() {
  	start = loadImage("images/start.png");
  	back = loadImage("images/back.png");
  	cupcake = loadImage("images/cupcake.png");
- 	addcupcakes(8);
     lifealive = loadImage("images/lifealive.png");
     lifedead = loadImage("images/lifedead.png");
     gameover=loadImage("images/gameover.png");
 }
 
 function draw() {
+
+	//console.log(cupcakearray.length);
 
 	background(bg);
 	
@@ -43,60 +45,67 @@ function draw() {
 	}
 	else{		
 	// game zone
+		//console.log("millis - "+millis());
+		//console.log("timer - "+timer);
 		if(life<1){
 			gameendscreen=true;
 		}
-	image(back,10,10,40,40);		
-	//score
-	textSize(32);
-	fill(0, 102, 153);
-	text("Score: "+score, width-250, 50);	
-		for(var i = 0; i < life; i++){
+		image(back,10,10,40,40);		
+		//score
+		textSize(32);
+		fill(0, 102, 153);
+		text("Score: "+score, width-250, 50);	
 		
-		image(lifealive,width-300-(i*30),30);
-		}
 
+		for(var i = 0; i < life; i++){
+			image(lifealive,width-300-(i*30),30);
+		}
 		for (var i = 0; i <cupcakearray.length;i++){		
 			tint(255,2*cupcakearray[i][2]);
 			image(cupcake,cupcakearray[i][0],cupcakearray[i][1]);
 			cupcakearray[i][2] = cupcakearray[i][2]-1;
 			if (cupcakearray[i][2]<1){	
-				console.log(life);
-				life = life-1;			
+				cupcakearray.splice(i,1);
+				life = life-1;		
 			}
 		}
-	if (millis()-timer > 4000) {
-		timer = millis();
-		addcupcakes(5);
+
+		if (millis()-timer > 1000) {
+			timer = millis();
+			addcupcakes(1);
+		}
+
+
+		for(var i = 0; i < life; i++){
+			console.log(life);
+			tint(255,255);
+			image(lifealive,width-300-(i*30),30);
+		}
+		// for(var i =0; i < 5-life; i++){
+		// 	tint(255,255);
+		// 	image(lifedead,width-300-(i*30),60);
+		// }
 	}
-	for(var i = 0; i < life; i++){
-		tint(255,255);
-		image(lifealive,width-300-(i*30),30);
-	}
-	for(var i =0; i < 5-life; i++){
-		tint(255,255);
-		image(lifedead,width-300-(i*30),60);
-	}
-}
 }        
 
-function addcupcakes(n){
+function addcupcakes(n){	
 	for (var i = 0; i <n;i++){
  		x = random(80,width-80);
  		y = random(80,height-120);
- 		cupcakearray[i] = [x,y,random(200,500)];
+ 		cupcakearray.push([x,y,random(250,300)]);
  	}
 }
 
 function mousePressed() {
 	var text = 'x='+mouseX.toString()+', y='+mouseY.toString();
-	alert(text);
+	//alert(text);
 	var d_start = dist(mouseX,mouseY,600,500);
 	if(d_start<60){
 		startscreen = false;
 		score = 0;
 		life = 5;
-		addcupcakes(8);
+		cupcakearray=[];
+		addcupcakes(3);
 	}
 	var d_back = dist(mouseX,mouseY,10,10);
 	if(d_back<50) {
