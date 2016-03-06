@@ -51,9 +51,8 @@ function draw() {
 	textSize(32);
 	fill(0, 102, 153);
 	text("Score: "+score, width-250, 50);	
- 
 		for(var i = 0; i < life; i++){
-		tint(255,255);
+		
 		image(lifealive,width-300-(i*30),30);
 		}
 
@@ -62,10 +61,9 @@ function draw() {
 			image(cupcake,cupcakearray[i][0],cupcakearray[i][1]);
 			cupcakearray[i][2] = cupcakearray[i][2]-1;
 			if (cupcakearray[i][2]<1){	
-				life = life-1;
-				tint(255,255);
+				console.log(life);
+				life = life-1;			
 			}
-			image(lifedead,width-300-(i*30),60);
 		}
 	if (millis()-timer > 4000) {
 		timer = millis();
