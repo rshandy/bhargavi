@@ -34,7 +34,7 @@ function draw() {
     image(grabtext,130, height/3);
     image(start,width/2-90, height/3+25);
 	}
-	else{
+	else {
 	// game zone
 			
 		if(life<1){
@@ -43,7 +43,6 @@ function draw() {
 		else{
 		image(back,10,10,40,40);
 		console.log(cupcakearray.length);
-
 
 	//score
 	textSize(32);
@@ -54,10 +53,8 @@ function draw() {
 		for(var i = 0; i < life; i++){
 		tint(255,255);
 		image(lifealive,width-300-(i*30),30);
-	}
+		}
 
-		
-		 }
 		for (var i = 0; i <cupcakearray.length;i++){		
 			tint(255,2*cupcakearray[i][2]);
 			image(cupcake,cupcakearray[i][0],cupcakearray[i][1]);
@@ -65,16 +62,13 @@ function draw() {
 			if (cupcakearray[i][2]<1){	
 				life = life-1;
 				tint(255,255);
-		image(lifedead,width-300-(i*30),60);
-	}
-				cupcakearray.splice(i,1);	//add/remove cupcakearray
 			}
+			image(lifedead,width-300-(i*30),60);
 		}
 	if (millis()-timer > 4000) {
 		timer = millis();
 		addcupcakes(5);
 	}
-	life
 	for(var i = 0; i < life; i++){
 		tint(255,255);
 		image(lifealive,width-300-(i*30),30);
@@ -83,8 +77,8 @@ function draw() {
 		tint(255,255);
 		image(lifedead,width-300-(i*30),60);
 	}
-    
-    
+}
+}        
 
 function addcupcakes(n){
 	for (var i = 0; i <n;i++){
@@ -117,6 +111,8 @@ function mousePressed() {
     	//alert(cupcakearray[i]);
     	score=score+1;
     	cupcakearray.splice(i,1);
+    	console.log('removing');
+    	console.log(cupcakearray);
     }
     }
 }
