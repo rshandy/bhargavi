@@ -25,14 +25,13 @@ function setup() {
     lifealive = loadImage("images/lifealive.png");
     lifedead = loadImage("images/lifedead.png");
     gameover=loadImage("images/gameover.png");
-    btnclose=loadImage("images/close.png")
+    btnreplay=loadImage("images/replay.png")
     btnhome=loadImage("images/homebutton.png")
     btnfacebook=loadImage("images/facebook.png")
 }
 
 function draw() {
 
-	//console.log(cupcakearray.length);
 
 	background(bg);
 	
@@ -48,7 +47,8 @@ function draw() {
 		text("Score: "+score, width/2-100, height/3);
 		image(btnhome,width/2-320, height/2+60);	
 		image(btnfacebook,width/2-100, height/2+60);
-		image(btnclose,width/2+100, height/2+67);
+		image(btnreplay,width/2+100, height/2+67);
+
 	}
 	else{		
 	// game zone
@@ -109,47 +109,53 @@ function addcupcakes(n){
 function mousePressed() {
 	var text = 'x='+mouseX.toString()+', y='+mouseY.toString();
 	alert(text);
-	var d_start = dist(mouseX,mouseY,600,500);
-	if(d_start<60){
-		startscreen = false;
-		score = 0;
-		life = 5;
-		cupcakearray=[];
-		addcupcakes(3);
+
+	// only if game has started
+	if (startscreen){
+		var d_start = dist(mouseX,mouseY,600,500);
+		if(d_start<60){
+			startscreen = false;
+			score = 0;
+			life = 5;
+			cupcakearray=[];
+			addcupcakes(3);
+		}
 	}
-	var d_back = dist(mouseX,mouseY,10,10);
-	if(d_back<50) {
-		startscreen = true;
-    
+	// only if game has started
+	if (startscreen==false){
+		var d_back = dist(mouseX,mouseY,10,10);
+		if(d_back<50) {
+			startscreen = true;	    
+		}
+	    //cupcake will dissapper once clicked on it.
+	    var d_cupcakeclick ;
+	    for (var i = 0; i <cupcakearray.length;i++){
+	    	d_cupcakeclick = dist(mouseX,mouseY,cupcakearray[i][0],cupcakearray[i][1]);
+	    	if(d_cupcakeclick<80){	
+	    	score=score+1;
+	    	cupcakearray.splice(i,1);
+	    	//console.log('removing');
+	    	//console.log(cupcakearray);
+	    	}
+	    }
 	}
-    //cupcake will dissapper once clicked on it.
-    var d_cupcakeclick ;
-    for (var i = 0; i <cupcakearray.length;i++){
-    	d_cupcakeclick = dist(mouseX,mouseY,cupcakearray[i][0],cupcakearray[i][1]);
-    	if(d_cupcakeclick<80){	
-    	score=score+1;
-    	cupcakearray.splice(i,1);
-    	//console.log('removing');
-    	//console.log(cupcakearray);
-    	}
-    }
+
 	if(gameendscreen){
-	var d_home = dist(mouseX,mouseY,width/2-220,height/2+60);
-	if(d_home<100){
-		startscreen = true;
-		gameendscreen = false;	
+		var d_home = dist(mouseX,mouseY,width/2-220,height/2+60);
+		if(d_home<100){
+			startscreen = true;
+			gameendscreen = false;	
+		}
+		var d_replay = dist(mouseX,mouseY,width/2+200,height/2+60);
+		if(d_replay<100){
+			gameendscreen = false;
+
+			startscreen = false;
+			score = 0;
+			life = 5;
+			cupcakearray=[];
+			addcupcakes(3);	
+
+		}
 	}
-	var d_replay = dist(mouseX,mouseY,width/2+200,height/2+60);
-	if(d_replay<100){
-		gameendscreen = false;
-
-		startscreen = false;
-		score = 0;
-		life = 5;
-		cupcakearray=[];
-		addcupcakes(3);	
-
-	}
-}
-
 }
