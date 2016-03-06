@@ -101,7 +101,7 @@ function addcupcakes(n){
 	// x = 100-1100, y = 100 - 700
 	for (var i = 0; i <n;i++){
  		x = 100+100*random(11);
- 		y = 100+100*random(7);
+ 		y = 100+100*random(6);
  		cupcakearray.push([x,y,random(250,300)]);
  	}
 }
@@ -132,6 +132,27 @@ function mousePressed() {
     	cupcakearray.splice(i,1);
     	//console.log('removing');
     	//console.log(cupcakearray);
+
     }
     }
+if(gameendscreen){
+	var d_home = dist(mouseX,mouseY,width/2-220,height/2+60);
+	if(d_home<100){
+		startscreen = true;
+		gameendscreen = false;
+
+		
+
+
+
+	}
+}
+
+
+
+
+
+
+
+
 }
