@@ -20,7 +20,7 @@ function setup() {
  	start = loadImage("images/start.png");
  	back = loadImage("images/back.png");
  	cupcake = loadImage("images/cupcake.png");
- 	addcupcakes(8);
+ 	addcupcakes(5);
     lifealive = loadImage("images/lifealive.png");
     lifedead = loadImage("images/lifedead.png");
     gameover=loadImage("images/gameover.png");
@@ -65,7 +65,7 @@ function draw() {
 				life = life-1;			
 			}
 		}
-	if (millis()-timer > 4000) {
+	if (millis()-timer > 3000) {
 		timer = millis();
 		addcupcakes(5);
 	}
