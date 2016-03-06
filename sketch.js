@@ -48,7 +48,7 @@ function draw() {
 		text("Score: "+score, width/2-100, height/3);
 		image(btnhome,width/2-320, height/2+60);	
 		image(btnfacebook,width/2-100, height/2+60);
-		image(btnclose,width/2+100, height/2+60);
+		image(btnclose,width/2+100, height/2+67);
 	}
 	else{		
 	// game zone
@@ -141,7 +141,7 @@ if(gameendscreen){
 		startscreen = true;
 		gameendscreen = false;
 
-		
+
 
 
 
