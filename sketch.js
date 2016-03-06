@@ -37,18 +37,16 @@ function draw() {
 	}
 	else if (gameendscreen) {
 		image(gameover,250,height/3);
+		textSize(32);
+		fill(0, 102, 153);
+		text("Score: "+score, width-250, 50);	
 	}
 	else{		
 	// game zone
-			
 		if(life<1){
 			gameendscreen=true;
 		}
-		else{
-		image(back,10,10,40,40);
-		console.log(cupcakearray.length);
-		}
-
+	image(back,10,10,40,40);		
 	//score
 	textSize(32);
 	fill(0, 102, 153);
