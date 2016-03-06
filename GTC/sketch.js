@@ -25,6 +25,9 @@ function setup() {
     lifealive = loadImage("images/lifealive.png");
     lifedead = loadImage("images/lifedead.png");
     gameover=loadImage("images/gameover.png");
+    btnclose=loadImage("images/close.png")
+    btnhome=loadImage("images/homebutton.png")
+    btnfacebook=loadImage("images/facebook.png")
 }
 
 function draw() {
@@ -36,13 +39,16 @@ function draw() {
 	if(startscreen){
 	//start screen 	
     image(grabtext,130, height/3);
-    image(start,width/2-90, height/3+25);
+    image(start,width/2-90, height/2+65);
 	}
 	else if (gameendscreen) {
 		image(gameover,250,height/3);
 		textSize(32);
 		fill(0, 102, 153);
-		text("Score: "+score, width-250, 50);	
+		text("Score: "+score, width/2-100, height/3);
+		image(btnhome,width/2-320, height/2+60);	
+		image(btnfacebook,width/2-100, height/2+60);
+		image(btnclose,width/2+100, height/2+60);
 	}
 	else{		
 	// game zone
@@ -72,7 +78,7 @@ function draw() {
 		}
 
 
-		if (millis()-timer > 1000) {
+		if (millis()-timer > 600) {
 			timer = millis();
 			addcupcakes(1);
 		}
