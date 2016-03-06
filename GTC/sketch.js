@@ -92,6 +92,7 @@ function draw() {
 }        
 
 function addcupcakes(n){	
+	// x = 1200, y = 800 
 	for (var i = 0; i <n;i++){
  		x = random(80,width-80);
  		y = random(80,height-120);
@@ -101,7 +102,7 @@ function addcupcakes(n){
 
 function mousePressed() {
 	var text = 'x='+mouseX.toString()+', y='+mouseY.toString();
-	//alert(text);
+	alert(text);
 	var d_start = dist(mouseX,mouseY,600,500);
 	if(d_start<60){
 		startscreen = false;
