@@ -108,7 +108,7 @@ function addcupcakes(n){
 
 function mousePressed() {
 	var text = 'x='+mouseX.toString()+', y='+mouseY.toString();
-	alert(text);
+	//alert(text);
 
 	// only if game has started
 	if (startscreen){
