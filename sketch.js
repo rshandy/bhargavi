@@ -126,33 +126,28 @@ function mousePressed() {
     var d_cupcakeclick ;
     for (var i = 0; i <cupcakearray.length;i++){
     	d_cupcakeclick = dist(mouseX,mouseY,cupcakearray[i][0],cupcakearray[i][1]);
-    if(d_cupcakeclick<80){
-    	
+    	if(d_cupcakeclick<80){	
     	score=score+1;
     	cupcakearray.splice(i,1);
     	//console.log('removing');
     	//console.log(cupcakearray);
-
+    	}
     }
-    }
-if(gameendscreen){
+	if(gameendscreen){
 	var d_home = dist(mouseX,mouseY,width/2-220,height/2+60);
 	if(d_home<100){
 		startscreen = true;
+		gameendscreen = false;	
+	}
+	var d_replay = dist(mouseX,mouseY,width/2+200,height/2+60);
+	if(d_replay<100){
 		gameendscreen = false;
-
-		
-
-
-
+		startscreen = false;
+		score = 0;
+		life = 5;
+		cupcakearray=[];
+		addcupcakes(3);	
 	}
 }
-
-
-
-
-
-
-
 
 }
