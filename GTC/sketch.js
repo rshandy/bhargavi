@@ -9,12 +9,15 @@ var gameendscreen = false;
 var cupcakearray = [];
 var gameover;
 var missedcupcakes = 0;
+var sentScore=false; // sent score to GA?
 
 function setup() {
 
 	score=0;
 	timer=0;
 	life=5;
+	sentScore=false;
+	missedcupcakes = 0;
 	bg = loadImage("images/cloudbackground.png");
 	canvas = createCanvas(1280, 800);
  	grabtext = loadImage("images/grabthecupcaketext.png");
@@ -55,7 +58,12 @@ function draw() {
 		//console.log("millis - "+millis());
 		//console.log("timer - "+timer);
 		if(life<1){
-			gameendscreen=true;
+			if(sentScore==false){
+			ga('send', 'event', 'GameScore', 'score', score);
+			//send score to ga
+			sentScore==true;
+			}
+			gameendscreen=true;			
 		}
 		image(back,10,10,40,40);		
 		//score
