@@ -5,35 +5,52 @@
   <!-- uncomment lines below to include extra p5 libraries -->
   <!--<script language="javascript" src="libraries/p5.dom.js"></script>-->
   <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
+  
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
-  <!-- this line removes any default padding and style. you might only need one of these values set. -->
+  <!--this line removes any default padding and style. you might only need one of these values set. -->
+
   <style> body {padding: 0; margin: 0;} </style>
   	<title>Grab the cupcake</title>
     <!-- You can use Open Graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-	<meta property="og:url"           content="" />
+	<meta property="og:url"           content="http://rshandy.github.io/bhargavi" />
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="Grab the cupcake" />
-	<meta property="og:description"   content="Come one come all. grab cupcakes get high score blah blah blah. love! " />
+	<meta property="og:description"   content="Can you grab these yummy cupcakes fast enough before they disappear?
+Play grab the cupcake and see how many you can." />
 	<meta property="og:image"         content="images/cupcake.png" />
+
+	<link rel="icon" 
+      type="image/png" 
+      href="images/cupcake.png">
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-70042022-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 
 </head>
 <body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '239459096396077',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
 
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-
-	<!-- Your share button code -->
-	<div class="fb-share-button" 
-		data-href="http://www.your-domain.com/your-page.html" 
-		data-layout="button_count">
-	</div>
-
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 </body>
 </html>
