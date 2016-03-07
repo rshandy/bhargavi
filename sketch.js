@@ -157,5 +157,12 @@ function mousePressed() {
 			addcupcakes(3);	
 
 		}
+		var d_share = dist(mouseX,mouseY,width/2, height/2+60);
+		if(d_share<100){
+			FB.ui({
+	        	method: 'share',
+	        	href: 'rshandy.github.io/bhargavi',
+	      	}, function(response){});
+		}
 	}
 }
